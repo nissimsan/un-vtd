@@ -1,0 +1,8 @@
+site_name: UN VTD
+theme: 
+  name: material
+  features: 
+#    - navigation.tabs
+
+copyright: 
+  UN/CEFACT 2024
