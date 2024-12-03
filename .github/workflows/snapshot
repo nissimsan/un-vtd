@@ -1,0 +1,39 @@
+name: Repository Dispatch Snapshot Handler
+
+on:
+  repository_dispatch:
+    types:
+      - jargon_onSnapshot
+
+jobs:
+  handle-snapshot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Prepare working directory
+        run: mkdir -p artefacts/snapshots/jsonSchemas
+
+      - name: Download and copy JSON schemas
+        run: |
+          echo "Extracting JSON schemas from snapshot payload..."
+          JSON_SCHEMAS=$(echo '${{ toJson(github.event.client_payload.artefacts.jsonSchemas) }}' | jq -c '.')
+          
+          for schema in $(echo $JSON_SCHEMAS | jq -c '.[]'); do
+            FILE_NAME=$(echo $schema | jq -r '.fileName')
+            URL=$(echo $schema | jq -r '.url')
+            
+            echo "Downloading $FILE_NAME from $URL..."
+            curl -L $URL -o "artefacts/snapshots/jsonSchemas/$FILE_NAME"
+          done
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git add artefacts/snapshots/jsonSchemas
+          git commit -m "Add JSON schema files from snapshot repository_dispatch event"
+          git push
