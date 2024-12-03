@@ -13,27 +13,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Prepare working directory
-        run: mkdir -p artefacts/jsonSchemas
-
-      - name: Download and copy JSON schemas
+      - name: Log the JSON schema content
+        id: log-json
         run: |
-          echo "Extracting JSON schemas from payload..."
-          JSON_SCHEMAS=$(echo '${{ toJson(github.event.client_payload.artefacts.jsonSchemas) }}' | jq -c '.')
+          echo "Event payload: ${{ toJson(github.event.client_payload) }}"
           
+          # Extract JSON schema URLs
+          echo "Extracting JSON schemas..."
+          JSON_SCHEMAS=$(echo '${{ toJson(github.event.client_payload.artefacts.jsonSchemas) }}' | jq '.')
+          echo "JSON Schemas: $JSON_SCHEMAS"
+          
+          # Iterate and log each schema file name and URL
           for schema in $(echo $JSON_SCHEMAS | jq -c '.[]'); do
             FILE_NAME=$(echo $schema | jq -r '.fileName')
             URL=$(echo $schema | jq -r '.url')
-            
-            echo "Downloading $FILE_NAME from $URL..."
-            curl -L $URL -o "artefacts/jsonSchemas/$FILE_NAME"
+            echo "Schema File: $FILE_NAME, URL: $URL"
           done
-
-      - name: Commit and push changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
           
-          git add artefacts/jsonSchemas
-          git commit -m "Add JSON schema files from repository_dispatch event"
-          git push
+      - name: Verify JSON schemas
+        run: |
+          echo "Additional processing can be added here..."
