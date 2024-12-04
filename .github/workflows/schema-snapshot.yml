@@ -56,7 +56,10 @@ jobs:
         run: |
           BRANCH_NAME="snapshot-${{ github.event.client_payload.snapshot.index }}-${{ github.run_id }}"
           echo "Pushing branch $BRANCH_NAME"
-          git push https://x-access-token:${TOKEN}@github.com/${{ github.repository }} $BRANCH_NAME
+          git push --set-upstream https://x-access-token:${TOKEN}@github.com/${{ github.repository }} $BRANCH_NAME
+      
+      - name: Wait for remote branch to propagate
+        run: sleep 5
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
@@ -67,6 +70,9 @@ jobs:
           title: "Snapshot: Add JSON schema files"
           body: |
             This pull request was automatically created by a workflow to add JSON schema files from a snapshot event.
+
+            - **Snapshot Index**: ${{ github.event.client_payload.snapshot.index }}
+            - **Description**: ${{ github.event.client_payload.snapshot.description }}
 
             - **Snapshot Index**: ${{ github.event.client_payload.snapshot.index }}
             - **Description**: ${{ github.event.client_payload.snapshot.description }}
