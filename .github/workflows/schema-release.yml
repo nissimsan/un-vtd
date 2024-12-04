@@ -15,7 +15,7 @@ jobs:
 
       - name: Create a new branch
         run: |
-          BRANCH_NAME="snapshot-${{ github.event.client_payload.release.index }}-${{ github.run_id }}"
+          BRANCH_NAME="release-${{ github.event.client_payload.release.index }}-${{ github.run_id }}"
           echo "Creating and switching to new branch $BRANCH_NAME"
           git checkout -b $BRANCH_NAME
 
@@ -24,7 +24,7 @@ jobs:
 
       - name: Download and copy JSON schemas
         run: |
-          echo "Extracting JSON schemas from snapshot payload..."
+          echo "Extracting JSON schemas from release payload..."
           JSON_SCHEMAS=$(echo '${{ toJson(github.event.client_payload.artefacts.jsonSchemas) }}' | jq -c '.')
           
           for schema in $(echo $JSON_SCHEMAS | jq -c '.[]'); do
@@ -48,15 +48,15 @@ jobs:
         env:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          BRANCH_NAME="snapshot-${{ github.event.client_payload.release.index }}-${{ github.run_id }}"
+          BRANCH_NAME="release-${{ github.event.client_payload.release.index }}-${{ github.run_id }}"
           echo "Pushing branch $BRANCH_NAME"
           git push https://x-access-token:${TOKEN}@github.com/${{ github.repository }} $BRANCH_NAME
       
       - name: Wait for remote branch to propagate
-        run: sleep 6
+        run: sleep 2
 
       - name: Create pull request
-        run: gh pr create -B main -H snapshot-${{ github.event.client_payload.release.index }}-${{ github.run_id }} --title 'Merge snapshot-${{ github.event.client_payload.release.index }}-${{ github.run_id }} into main' --body 'Blah'
+        run: gh pr create -B main -H release-${{ github.event.client_payload.release.index }}-${{ github.run_id }} --title 'Merge release-${{ github.event.client_payload.release.index }}-${{ github.run_id }} into main' --body 'Blah'
         env:
             GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
         
