@@ -53,7 +53,7 @@ jobs:
           git push https://x-access-token:${TOKEN}@github.com/${{ github.repository }} $BRANCH_NAME
       
       - name: Wait for remote branch to propagate
-        run: sleep 6
+        run: sleep 2
 
       - name: Create pull request
         run: gh pr create -B main -H snapshot-${{ github.event.client_payload.snapshot.index }}-${{ github.run_id }} --title 'Merge snapshot-${{ github.event.client_payload.snapshot.index }}-${{ github.run_id }} into main' --body 'Blah'
