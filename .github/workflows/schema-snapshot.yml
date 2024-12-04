@@ -29,6 +29,11 @@ jobs:
             curl -L $URL -o "artefacts/snapshots/jsonSchemas/$FILE_NAME"
           done
 
+      - name: List downloaded files
+        run: ls -R artefacts/snapshots/jsonSchemas
+
+
+
       - name: Create a new branch
         run: |
           BRANCH_NAME="snapshot-${{ github.event.client_payload.snapshot.index }}-${{ github.run_id }}"
@@ -41,6 +46,11 @@ jobs:
           
           git add artefacts/snapshots/jsonSchemas
           git commit -m "Add JSON schema files from snapshot repository_dispatch event"
+
+
+      - name: Show git status
+        run: git status
+
 
       - name: Push branch
         env:
