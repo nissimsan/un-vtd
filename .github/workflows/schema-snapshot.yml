@@ -67,5 +67,5 @@ jobs:
       - name: create pull request
         run: gh pr create -B main -H snapshot-${{ github.event.client_payload.snapshot.index }}-${{ github.run_id }} --title 'Merge snapshot-${{ github.event.client_payload.snapshot.index }}-${{ github.run_id }} into main' --body 'Blah'
         env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
         
