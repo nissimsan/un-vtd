@@ -59,7 +59,7 @@ jobs:
         run: |
           BRANCH_NAME="snapshot-${{ github.event.client_payload.snapshot.index }}-${{ github.run_id }}"
           echo "Pushing branch $BRANCH_NAME"
-          git push --set-upstream https://x-access-token:${TOKEN}@github.com/${{ github.repository }} $BRANCH_NAME
+          git push https://x-access-token:${TOKEN}@github.com/${{ github.repository }} $BRANCH_NAME
       
       - name: Wait for remote branch to propagate
         run: sleep 10
