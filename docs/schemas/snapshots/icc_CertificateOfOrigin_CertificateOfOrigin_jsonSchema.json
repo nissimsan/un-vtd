@@ -553,10 +553,6 @@
     "transportMode": {
       "type": "string",
       "description": "Code specifying a mode of transport"
-    },
-    "attribute": {
-      "type": "string",
-      "description": ""
     }
   },
   "description": "",
