@@ -52,11 +52,10 @@ jobs:
           echo "Pushing branch $BRANCH_NAME"
           git push https://x-access-token:${TOKEN}@github.com/${{ github.repository }} $BRANCH_NAME
       
-      - name: Wait for remote branch to propagate
-        run: sleep 2
-
       - name: Create pull request
-        run: gh pr create -B main -H snapshot-${{ github.event.client_payload.snapshot.index }}-${{ github.run_id }} --title 'Merge snapshot-${{ github.event.client_payload.snapshot.index }}-${{ github.run_id }} into main' --body 'Blah'
+        run: |
+          PR_TITLE="${{ github.event.client_payload.domain.name }} ${{ github.event.client_payload.action.type }}"
+          echo "Creating pull request with title: $PR_TITLE"
+          gh pr create -B main -H snapshot-${{ github.event.client_payload.snapshot.index }}-${{ github.run_id }} --title "$PR_TITLE" --body 'PR generated from webhook triggering.'
         env:
-            GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-        
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
