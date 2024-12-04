@@ -1,0 +1,28 @@
+{
+  "transportContractNumber": "The quick brown fox jumps over the lazy dog.",
+  "invoiceNumber": "The quick brown fox jumps over the lazy dog.",
+  "contractNumner": "The quick brown fox jumps over the lazy dog.",
+  "documentIdentifier": "The quick brown fox jumps over the lazy dog.",
+  "documentaryCreditIdentifier": "The quick brown fox jumps over the lazy dog.",
+  "purchaseOrderNumber": {
+    "identifier": "The quick brown fox jumps over the lazy dog.",
+    "issueDate": "1970-01-01T00:00:00Z"
+  },
+  "certificateNumber": "The quick brown fox jumps over the lazy dog.",
+  "placeOfDeparture": "The quick brown fox jumps over the lazy dog.",
+  "grossWeight": {},
+  "netWeight": {},
+  "transportMeansGrossWeight": {},
+  "goodsDescription": "The quick brown fox jumps over the lazy dog.",
+  "numberOfPackages": {},
+  "commodityCode": "",
+  "packagingType": "43",
+  "productIdentifier": "The quick brown fox jumps over the lazy dog.",
+  "shippingMarks": "The quick brown fox jumps over the lazy dog.",
+  "transportMeansIdentifier": "The quick brown fox jumps over the lazy dog.",
+  "vehicleRegistrationNumber": "The quick brown fox jumps over the lazy dog.",
+  "transportEquipmentIdentifier": "The quick brown fox jumps over the lazy dog.",
+  "containerSize": "1",
+  "transportMode": "The quick brown fox jumps over the lazy dog.",
+  "attribute": "The quick brown fox jumps over the lazy dog."
+}
