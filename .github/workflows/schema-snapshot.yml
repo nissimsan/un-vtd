@@ -41,7 +41,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
           echo "Adding and committing downloaded files..."
-          git add artefacts/snapshots/jsonSchemas
+          git add docs/schemas/snapshots
           git commit -m "Add JSON schema files from snapshot repository_dispatch event"
 
       - name: Push branch
