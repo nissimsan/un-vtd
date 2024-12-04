@@ -7,12 +7,6 @@ A commercial document which consists of an itemised account of goods or services
 ```
 
 
-## Form
-
->>  INSERT FORM HERE  <<
-
-
-
 ## Schema
 ```json
 {% include "schemas/icc_KeyDataElements_Document_jsonSchema.json" %}
