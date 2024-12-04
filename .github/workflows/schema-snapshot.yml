@@ -38,6 +38,9 @@ jobs:
       - name: List downloaded files
         run: ls -R artefacts/snapshots/jsonSchemas
 
+      - name: Show git status
+        run: git status
+
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
