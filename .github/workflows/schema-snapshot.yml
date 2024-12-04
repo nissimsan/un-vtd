@@ -65,6 +65,8 @@ jobs:
         run: sleep 6
         
       - name: Create Pull Request (manual)
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh pr create \
             --title "Snapshot: Add JSON schema files" \
