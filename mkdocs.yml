@@ -1,8 +1,35 @@
-site_name: UN VTD
+site_name: Verifiable Trade Documents
+#site_url: https://nissimsan.github.io/un-vtd
 theme: 
   name: material
+  logo: images/logo.svg
+  favicon: images/favicon.png
   features: 
-#    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - toc.follow
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.copy
+  palette:
 
+    # Palette toggle for light mode
+    - scheme: default
+      toggle:
+        icon: material/weather-night 
+        name: Switch to dark mode
+      primary: white
+        
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+      primary: grey
 copyright: 
   UN/CEFACT 2024
+plugins:
+  - include-markdown
