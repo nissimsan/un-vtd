@@ -59,7 +59,7 @@ jobs:
           git push --set-upstream https://x-access-token:${TOKEN}@github.com/${{ github.repository }} $BRANCH_NAME
       
       - name: Wait for remote branch to propagate
-        run: sleep 5
+        run: sleep 10
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
