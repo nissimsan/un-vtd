@@ -1,20 +1,12 @@
-# Commercial Invoice
-A commercial document which consists of an itemised account of goods or services delivered, together with a demand for payment.
+# Bill of Lading
+A document to provide evidence of contract of carriage; confirmation of receipt for the goods; and/or a document of title.
 
 ## Example
 ```json
 {% include "schemas/icc_KeyDataElements_Document_instance_jsonSchema.json" %}
 ```
 
-
-## Form
-
->>  INSERT FORM HERE  <<
-
-
-
 ## Schema
 ```json
 {% include "schemas/icc_KeyDataElements_Document_jsonSchema.json" %}
 ```
-

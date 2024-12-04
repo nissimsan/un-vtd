@@ -1,20 +1,12 @@
-# Commercial Invoice
-A commercial document which consists of an itemised account of goods or services delivered, together with a demand for payment.
+# Packing List
+A document which covers the physical delivery of goods from one physical site to another in line with a transport contract obligation.
 
 ## Example
 ```json
 {% include "schemas/icc_KeyDataElements_Document_instance_jsonSchema.json" %}
 ```
 
-
-## Form
-
->>  INSERT FORM HERE  <<
-
-
-
 ## Schema
 ```json
 {% include "schemas/icc_KeyDataElements_Document_jsonSchema.json" %}
 ```
-
