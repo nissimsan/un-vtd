@@ -62,7 +62,7 @@ jobs:
           git push https://x-access-token:${TOKEN}@github.com/${{ github.repository }} $BRANCH_NAME
       
       - name: Wait for remote branch to propagate
-        run: sleep 10
+        run: sleep 60
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
